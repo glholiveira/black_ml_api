@@ -23,18 +23,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-!+yl1w#(09a&*q8qe4sk_t_hra#f%7)6+^%vg=ww^tn)c^2(m3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 #Configurações de HTTPS e CSRF
 
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
-SECURE_SSL_REDIRECT = True
-CSRF_TRUSTED_ORIGINS = ['https://dadosicresolve.tech']
+# CSRF_COOKIE_SECURE = True
+# SESSION_COOKIE_SECURE = True
+# SECURE_SSL_REDIRECT = True
+CSRF_TRUSTED_ORIGINS = ['https://dadosicresolve.tech','http://177.93.131.233:8000',]
 
-SECURE_HSTS_SECONDS = 31536000  # 1 ano em segundos
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_PRELOAD = True
+# SECURE_HSTS_SECONDS = 31536000  # 1 ano em segundos
+# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+# SECURE_HSTS_PRELOAD = True
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
@@ -59,9 +59,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
+    'quadro_de_metas',
+    'app_Disparo_de_DAGs',
+
 ]
 
 MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
@@ -70,7 +75,8 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',    
+
     
 ]
 
@@ -104,7 +110,7 @@ DATABASES = {
         'NAME': 'banco_core',
         'USER': 'admin',
         'PASSWORD': 'Magazine123',
-        'HOST': '209.172.6.172',
+        'HOST': '177.93.131.233',
         'PORT': '5432',
     }
 }
