@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'quadro_de_metas',
     'app_Disparo_de_DAGs',
+    'classificacao',
 
 ]
 
